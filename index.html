@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starcore Sentinel | Experiencia Arcade PC</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 class="texto-pixel">STARCORE SENTINEL</h1>
+        <nav>
+            <button class="botao-aba ativo" onclick="abrirAba(event, 'inicio')">INICIO</button>
+            <button class="botao-aba" onclick="abrirAba(event, 'historia')">HISTORIA</button>
+            <button class="botao-aba" onclick="abrirAba(event, 'jogar')">JOGAR</button>
+            <button class="botao-aba" onclick="abrirAba(event, 'experiencia')">EXPERIENCIA</button>
+            <button class="botao-aba" onclick="abrirAba(event, 'galeria')">GALERIA</button>
+            <button class="botao-aba" onclick="abrirAba(event, 'contato')">CONTATO</button>
+        </nav>
+    </header>
+
+    <div class="container-principal">
+        <main>
+            <section id="inicio" class="conteudo-aba ativo">
+                <div class="hero-section">
+                    <h2 class="texto-pixel">BEM-VINDO AO NUCLEO</h2>
+                    <p class="subtitulo-pixel">A ULTIMA ESPERENÇA DA HUMANIDADE CONTRA O VAZIO.</p>
+                </div>
+
+                <div class="carrossel">
+                    <div class="carrossel-container" id="carrossel-container">
+                        <div class="carrossel-item ativo">
+                            <img class="midia-slot" data-asset-key="carousel1" alt="Acao intensa de Starcore Sentinel">
+                            <div class="overlay-carrossel">AÇÃO INTENSA</div>
+                        </div>
+                        <div class="carrossel-item">
+                            <img class="midia-slot" data-asset-key="carousel2" alt="Upgrades neon de Starcore Sentinel">
+                            <div class="overlay-carrossel">UPGRADES NEON</div>
+                        </div>
+                        <div class="carrossel-item">
+                            <img class="midia-slot" data-asset-key="carousel3" alt="Ondas do vazio em Starcore Sentinel">
+                            <div class="overlay-carrossel">ONDAS DO VAZIO</div>
+                        </div>
+                        <div class="carrossel-item">
+                            <img class="midia-slot" data-asset-key="carousel4" alt="Nucleo Starcore energizado">
+                            <div class="overlay-carrossel">O NÚCLEO</div>
+                        </div>
+                    </div>
+                    <div class="carrossel-controles">
+                        <button onclick="mudarSlide(-1)" class="botao-pixel-p">&lt;</button>
+                        <button onclick="mudarSlide(1)" class="botao-pixel-p">&gt;</button>
+                    </div>
+                </div>
+
+                <div class="grid-layout">
+                    <div class="coluna-principal">
+                        <h3 class="texto-pixel-medio">SOBRE O PROJETO</h3>
+                        <p>Starcore Sentinel e um space shooter arcade para PC, focado em resposta rapida, leitura visual clara e combate intenso.</p>
+                        <p>Inspirado na era de ouro dos arcades, o jogo coloca voce no controle da Sentinela, a ultima linha de defesa contra uma ameaca interdimensional.</p>
+                    </div>
+                    <div class="coluna-lateral">
+                        <div class="caixa-borda-pixel">
+                            <h3 style="font-size: 0.7rem; margin-bottom: 15px; color: var(--roxo-claro);">DESTAQUES:</h3>
+                            <ul style="font-size: 0.6rem; list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 10px;">[OK] SESSOES DINAMICAS</li>
+                                <li style="margin-bottom: 10px;">[OK] PRECISAO CIRURGICA</li>
+                                <li style="margin-bottom: 10px;">[OK] DESAFIO ARCADE</li>
+                                <li style="margin-bottom: 10px;">[OK] ESTETICA NEON</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chamada-acao" style="text-align: center; margin-top: 30px;">
+                    <button class="botao-pixel" onclick="document.querySelector('[onclick*=\'jogar\']').click()">PREPARAR PARA DECOLAGEM</button>
+                </div>
+            </section>
+
+            <section id="historia" class="conteudo-aba">
+                <h2 class="texto-pixel">A SAGA STARCORE</h2>
+                <p>No ano 3279, a galaxia e ameacada por <strong>O Vazio</strong>, uma anomalia cosmica que consome sistemas estelares inteiros.</p>
+                <div class="caixa-borda-pixel">
+                    <p style="font-size: 0.8rem;">O projeto <strong>Sentinela Starcore</strong> e a ultima esperanca: uma nave ancorada no centro do conflito, gerando um campo de defesa intransponivel.</p>
+                </div>
+                <p>Sua missao e defender o Nucleo Starcore e confrontar a inteligencia coletiva do Vazio em sua origem para salvar o universo da aniquilacao total.</p>
+            </section>
+
+            <section id="jogar" class="conteudo-aba">
+                <h2 class="texto-pixel">Play</h2>
+                <div class="espaco-do-jogo">
+                    <iframe
+                        id="game-frame"
+                        class="game-frame"
+                        title="Starcore Sentinel"
+                        loading="lazy"
+                        allowfullscreen
+                    ></iframe>
+                    <div id="game-fallback" class="game-fallback">
+                        <p>[ ADICIONE O EXPORT DO JOGO EM assets/jogo/ ]</p>
+                        <p class="texto-ajuda">Defina o arquivo inicial no script.js, por exemplo: assets/jogo/index.html</p>
+                    </div>
+                </div>
+                <div class="caixa-borda-pixel" style="text-align: center; margin-top: 20px;">
+                    <p style="font-size: 0.7rem; color: var(--roxo-claro);">OTIMIZADO PARA PC:</p>
+                    <p style="font-size: 0.6rem;">[ MOUSE ] - Rotacao e mira 360 graus<br>[ TECLADO ] - Granada ao pressionar ESPAÇO</p>
+                </div>
+            </section>
+
+            <section id="experiencia" class="conteudo-aba">
+                <h2 class="texto-pixel">PILOTO: DAVY JONES</h2>
+                <p>Projetado para quem valoriza leitura rapida, desafio consistente e controles precisos.</p>
+
+                <div class="caixa-borda-pixel">
+                    <h3 style="font-size: 0.7rem; margin-bottom: 10px; color: var(--roxo-claro);">POR QUE JOGAR?</h3>
+                    <p style="font-size: 0.75rem;"><strong>Nostalgia Pura:</strong> A mecanica de nave fixa no centro remete a classicos como Asteroids, unindo o retro ao visual neon moderno.</p>
+                    <p style="font-size: 0.75rem;"><strong>Evolucao de Habilidade:</strong> A mira 360 graus e a esquiva de projeteis exigem reflexos apurados.</p>
+                    <p style="font-size: 0.75rem;"><strong>Zero Latencia:</strong> Foco total em uma experiencia fluida, eliminando a sensacao de atraso nos comandos.</p>
+                </div>
+            </section>
+
+            <section id="galeria" class="conteudo-aba">
+                <h2 class="texto-pixel">VISUAIS DO NUCLEO</h2>
+                <div class="grid-galeria">
+                    <div class="item-galeria">
+                        <img class="midia-slot" data-asset-key="gallery1" alt="Sentinela Mark I">
+                        <div class="overlay-galeria">SENTINELA MARK I</div>
+                    </div>
+                    <div class="item-galeria">
+                        <img class="midia-slot" data-asset-key="gallery2" alt="Ondas de choque">
+                        <div class="overlay-galeria">ONDAS DE CHOQUE</div>
+                    </div>
+                    <div class="item-galeria">
+                        <img class="midia-slot" data-asset-key="gallery3" alt="Nucleo energizado">
+                        <div class="overlay-galeria">NUCLEO ENERGIZADO</div>
+                    </div>
+                    <div class="item-galeria">
+                        <img class="midia-slot" data-asset-key="gallery4" alt="Setor 7 vazio">
+                        <div class="overlay-galeria">SETOR 7: VAZIO</div>
+                    </div>
+                    <div class="item-galeria">
+                        <img class="midia-slot" data-asset-key="gallery5" alt="Bosslight neon">
+                        <div class="overlay-galeria">BOSSLIGHT NEON</div>
+                    </div>
+                    <div class="item-galeria">
+                        <img class="midia-slot" data-asset-key="gallery6" alt="Interface de combate">
+                        <div class="overlay-galeria">UI DE COMBATE</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contato" class="conteudo-aba">
+                <h2 class="texto-pixel">RELATORIO DE MISSAO</h2>
+                <form id="formulario-contato">
+                    <div class="grupo-formulario">
+                        <label for="nome">ID DO PILOTO:</label>
+                        <input type="text" id="nome" required placeholder="Seu apelido...">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="email">FREQUENCIA (EMAIL):</label>
+                        <input type="email" id="email" required placeholder="seu@email.com">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="mensagem">MENSAGEM AO COMANDO:</label>
+                        <textarea id="mensagem" rows="4" required placeholder="Sua transmissao de dados..."></textarea>
+                    </div>
+                    <button type="submit" class="botao-pixel">ENVIAR TRANSMISSAO</button>
+                </form>
+                <div id="status-formulario"></div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p class="texto-pixel-pequeno">&copy; 2026 Starcore Sentinel | Projeto otimizado para Davy Jones</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
