@@ -12,6 +12,7 @@ const mediaAssets = {
 };
 
 const gameIframeSrc = "game/index.html";
+const idadeMinimaPermitida = 16;
 
 function abrirAba(evento, nomeAba) {
     const conteudoAba = document.getElementsByClassName("conteudo-aba");
@@ -63,8 +64,47 @@ function carregarJogo() {
 
     frame.src = gameIframeSrc;
     frame.addEventListener("load", () => {
+        if (!fallback) {
+            return;
+        }
+
         fallback.classList.add("oculto");
     });
+}
+
+function bloquearAcesso() {
+    document.body.classList.remove("site-escondido");
+    document.body.classList.add("acesso-negado");
+    document.body.innerHTML = `
+        <main class="bloqueio-idade" aria-live="polite">
+            <h1 class="texto-pixel">ACESSO BLOQUEADO</h1>
+            <p>Este site possui restricao de idade e nao pode ser exibido para menores de ${idadeMinimaPermitida} anos.</p>
+            <p class="texto-ajuda">Feche esta pagina para encerrar o acesso.</p>
+        </main>
+    `;
+}
+
+function validarIdadeInicial() {
+    const resposta = window.prompt(`Informe sua idade para acessar o site. O acesso e permitido apenas para maiores de ${idadeMinimaPermitida} anos.`);
+
+    if (resposta === null) {
+        window.alert("Acesso cancelado. Este site exige confirmacao de idade.");
+        return false;
+    }
+
+    const idadeInformada = Number.parseInt(resposta.trim(), 10);
+
+    if (Number.isNaN(idadeInformada)) {
+        window.alert("Idade invalida. O site sera bloqueado.");
+        return false;
+    }
+
+    if (idadeInformada < idadeMinimaPermitida) {
+        window.alert(`Acesso negado. Este site e permitido apenas para maiores de ${idadeMinimaPermitida} anos.`);
+        return false;
+    }
+
+    return true;
 }
 
 function mostrarSlide(indice) {
@@ -84,19 +124,28 @@ function mudarSlide(direcao) {
     mostrarSlide(slideAtual + direcao);
 }
 
-setInterval(() => {
-    mudarSlide(1);
-}, 5000);
+function iniciarSite() {
+    setInterval(() => {
+        mudarSlide(1);
+    }, 5000);
 
-document.getElementById("formulario-contato").addEventListener("submit", function (e) {
-    e.preventDefault();
+    document.getElementById("formulario-contato").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    const nomePiloto = document.getElementById("nome").value;
-    const statusMensagem = document.getElementById("status-formulario");
+        const nomePiloto = document.getElementById("nome").value;
+        const statusMensagem = document.getElementById("status-formulario");
 
-    statusMensagem.innerHTML = `<p style="color: #00ff00; font-size: 0.7rem; margin-top: 10px;">&gt; TRANSMISSAO RECEBIDA, PILOTO ${nomePiloto.toUpperCase()}!</p>`;
-    this.reset();
-});
+        statusMensagem.innerHTML = `<p style="color: #00ff00; font-size: 0.7rem; margin-top: 10px;">&gt; TRANSMISSAO RECEBIDA, PILOTO ${nomePiloto.toUpperCase()}!</p>`;
+        this.reset();
+    });
 
-carregarMidias();
-carregarJogo();
+    carregarMidias();
+    carregarJogo();
+    document.body.classList.remove("site-escondido");
+}
+
+if (validarIdadeInicial()) {
+    iniciarSite();
+} else {
+    bloquearAcesso();
+}
