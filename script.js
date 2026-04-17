@@ -85,6 +85,8 @@ function bloquearAcesso() {
 }
 
 function validarIdadeInicial() {
+    window.alert(`Aviso: este site possui restricao de idade. O acesso so e permitido para maiores de ${idadeMinimaPermitida} anos.`);
+
     const resposta = window.prompt(`Informe sua idade para acessar o site. O acesso e permitido apenas para maiores de ${idadeMinimaPermitida} anos.`);
 
     if (resposta === null) {
@@ -144,8 +146,10 @@ function iniciarSite() {
     document.body.classList.remove("site-escondido");
 }
 
-if (validarIdadeInicial()) {
-    iniciarSite();
-} else {
-    bloquearAcesso();
-}
+window.addEventListener("load", () => {
+    if (validarIdadeInicial()) {
+        iniciarSite();
+    } else {
+        bloquearAcesso();
+    }
+});
