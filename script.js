@@ -72,6 +72,20 @@ function carregarJogo() {
     });
 }
 
+function abrirJogoTelaCheia() {
+    const areaDoJogo = document.querySelector(".espaco-do-jogo");
+
+    if (!areaDoJogo) {
+        return;
+    }
+
+    if (areaDoJogo.requestFullscreen) {
+        areaDoJogo.requestFullscreen();
+    } else if (areaDoJogo.webkitRequestFullscreen) {
+        areaDoJogo.webkitRequestFullscreen();
+    }
+}
+
 function bloquearAcesso() {
     document.body.classList.remove("site-escondido");
     document.body.classList.add("acesso-negado");
